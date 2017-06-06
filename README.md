@@ -29,6 +29,36 @@
 	再次回到Activity-->onRestart()(不可见变为可见)-->onStart()-->onResume()
 		
 	退出当前Activity时-->:onPause()-->onSart()-->onDestory()销毁资源等等
+	
+	A Activity打开B Activity的时候
+	
+        A Activity              B Activity
+        
+        onCreate()
+        
+        onStart()
+        
+        onResume()
+        
+        onPause()               
+                                onCreate()
+                                
+                                onStart()
+                                
+                                onResume()
+        onStop()
+        
+        B 点击Back键的时候
+                                onPause()
+        onRestart()
+        
+        onStart()
+        
+        onResume()
+                                onStop()
+                                
+                                onDestory()
+	
 ###### 3.android进程优先级 
     前台：处于与用户进行交互的Activity或者与前台Activity绑定的Service
     
