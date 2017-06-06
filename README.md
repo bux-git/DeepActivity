@@ -1,9 +1,11 @@
-# 重识Activity,深入Activity 系列整理
+# 重识Activity,深入Activity 系列整理    
+[官方文档](https://developer.android.google.cn/guide/components/activities.html)
 ## 目录
 * [**Activity生命周期**](#Activity生命周期)
-* [**Android任务栈**](#Android任务栈)
-* [**activity启动模式**](#activity启动模式)
-* [**scheme跳转协议**](#scheme跳转协议)
+* [**Android任务栈**](#android任务栈)
+* [**Activity启动模式**](#activity启动模式)
+* [**Activity启动方式Scheme跳转协议**](#activity启动方式scheme跳转协议)
+* [**Activity数据交互**](#activity数据交互)
 
 #### Activity是一个负责与用户交互的组件，提供一个屏幕，用户可以用来交互为了完成某项任务	
 ##### Activity生命周期
@@ -93,22 +95,26 @@
 
     
 #### Android任务栈
-       先进后出
-#### activity启动模式
-	1.standard 标准模式 每次都重新创建Activity
+[Android任务栈](https://developer.android.google.cn/guide/components/tasks-and-back-stack.html)
+#### Activity启动模式
+	standard 标准模式，每次都新建一个实例对象
 	
-	2.singletop 栈顶复用模式  当Activity处于栈顶时 复用此activity 其他情况则和标准模式一样
+    singleTop 如果在任务栈顶发现了相同的实例则重用，否则新建并压入栈顶
+    
+    singleTask 如果在任务栈中发现了相同的实例，将其上面的任务终止并移除，重用该实例。否则新建实例并入栈
+    
+    singleInstance 允许不同应用，进程线程等共用一个实例，无论从何应用调用该实例都重用
 	
-	3.singletask 复用模式 activity存在与任务栈中 则复用此activity 同时将此activity以上的
-	  activity全部弹出栈
-	  
-	4.singleinstance activity独享一个任务栈
-	
-#### scheme跳转协议
+#### Activity启动方式Scheme跳转协议
+    启动方式：
+        直接启动
+        匿名启动
+    Scheme跳转协议：
 	是一种页面跳转协议，通过定义自己的scheme协议，可以非常方便的跳转app中的各个页面;
 	通过scheme协议,服务器可以定制化告诉App跳转到哪个页面
 	通过通知栏消息定制化跳转页面
 	通过H5页面跳转页面
 	
+#### Activity数据交互
 
 [回到顶部](#目录)
