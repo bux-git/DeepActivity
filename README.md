@@ -98,12 +98,20 @@
 [Android任务栈](https://developer.android.google.cn/guide/components/tasks-and-back-stack.html)
 #### Activity启动模式
 	standard 标准模式，每次都新建一个实例对象
+	    如果以这种方式启动的Activity被跨进程调用,在5.0之前新启动的Activity实例会放入发送Intent的Task的栈的顶部
+	    5.0之后，则会创建一个新的Task放入新启动的Activity
 	
-    singleTop 如果在任务栈顶发现了相同的实例则重用，否则新建并压入栈顶
+    singleTop 栈顶复用模式，如果要开启的activity在任务栈的顶部已经存在，就不会创建新的实例，
+        而是调用 onNewIntent() 方法。避免栈顶的activity被重复的创建.同standard模式，
+        如果是外部程序启动singleTop的Activity，在Android 5.0之前新创建的Activity会位于调用者的Task中，5.0及以后会放入新的Task中。
     
-    singleTask 如果在任务栈中发现了相同的实例，将其上面的任务终止并移除，重用该实例。否则新建实例并入栈
+    singleTask 栈内复用模式， activity只会在任务栈里面存在一个实例.
+        在跨应用Intent传递时，如果系统中不存在singleTask Activity的实例，那么将创建一个新的Task，
+        然后创建SingleTask Activity的实例，将其放入新的Task中。
     
-    singleInstance 允许不同应用，进程线程等共用一个实例，无论从何应用调用该实例都重用
+    singleInstance 单一实例模式，整个手机操作系统里面只有一个实例存在。不同的应用去打开这个activity 
+        共享公用的同一个activity。他会运行在自己单独，独立的任务栈里面，并且任务栈里面只有他一个实例存在
+        。应用场景：呼叫来电界面。这种模式的使用情况比较罕见，在Launcher中可能使用。或者你确定你需要使Activity只有一个实例
 	
 #### Activity启动方式Scheme跳转协议
     启动方式：
