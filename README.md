@@ -58,6 +58,26 @@
                                 onStop()
                                 
                                 onDestory()
+                                
+    Activity生命周期交互涉及思想
+        1.为什么要先暂停当前Activity?
+            当Activity进入paused状态，系统会调用Activity的OnPause()方法.通常应该在onPause()方法里面做如下事情:
+            
+            a.停止一切动画效果，或者其他消耗cpu的行为。
+            
+            b.在离开之前提交未被保存改动，应该只保存那些用户认为应该保存的数据，比如在邮箱应用中，
+                用户正在向文本输入框中写入文字，那么这种改动 被保存下来才显得合理。
+                
+            c.释放系统资源，比如广播接受者，传感处理器（gps等），或者其他影响电池消耗的东西，
+                因为在pause状态下用户并不需要他们。
+                
+            从而避免影响新Activity打开的行为等，如 A Activity在播放视频 如果有电话过来等 就应该先暂停A 中的视频播放等 不影响通话
+            
+            
+        2.为什么要先执行要打开的Activity的onCreate (onRestart) onStart onResume 方法 
+            在打开新Activity的时候，为什么不先执行当前Activity的 onPause onStop 方法呢?
+            
+            a.防止A启动B时 B启动过程出现异常程序Crash 而A已经停止 导致出现黑屏等状况
 	
 ###### 3.android进程优先级 
     前台：处于与用户进行交互的Activity或者与前台Activity绑定的Service
