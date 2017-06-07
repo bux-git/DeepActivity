@@ -6,6 +6,7 @@
 * [**Activity启动模式**](#activity启动模式)
 * [**Activity启动方式Scheme跳转协议**](#activity启动方式scheme跳转协议)
 * [**Activity数据交互**](#activity数据交互)
+* [**深入Activity**](#深入activity)
 
 #### Activity是一个负责与用户交互的组件，提供一个屏幕，用户可以用来交互为了完成某项任务	
 ##### Activity生命周期
@@ -124,5 +125,9 @@
 	通过H5页面跳转页面
 	
 #### Activity数据交互
+#### 深入Activity
+[Activity启动过程全解析](http://blog.csdn.net/zhaokaiqiang1992/article/details/49428287)   
+[Activity界面显示全解析](http://blog.csdn.net/zhaokaiqiang1992/article/details/49428287)
+
 
 [回到顶部](#目录)
