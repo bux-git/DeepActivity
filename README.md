@@ -4,7 +4,7 @@
 * [**Activity生命周期**](#Activity生命周期)
 * [**Android任务栈**](#android任务栈)
 * [**Activity启动模式**](#activity启动模式)
-* [**Activity启动方式Scheme跳转协议**](#activity启动方式scheme跳转协议)
+* [**Activity启动方式 Intent详解**](#intent详解)
 * [**Activity数据交互**](#activity数据交互)
 * [**深入Activity**](#深入activity)
 
@@ -113,17 +113,16 @@
     singleInstance 单一实例模式，整个手机操作系统里面只有一个实例存在。不同的应用去打开这个activity 
         共享公用的同一个activity。他会运行在自己单独，独立的任务栈里面，并且任务栈里面只有他一个实例存在
         。应用场景：呼叫来电界面。这种模式的使用情况比较罕见，在Launcher中可能使用。或者你确定你需要使Activity只有一个实例
-	
-#### Activity启动方式Scheme跳转协议
-    启动方式：
-        直接启动
-        匿名启动
-    Scheme跳转协议：
-	是一种页面跳转协议，通过定义自己的scheme协议，可以非常方便的跳转app中的各个页面;
-	通过scheme协议,服务器可以定制化告诉App跳转到哪个页面
-	通过通知栏消息定制化跳转页面
-	通过H5页面跳转页面
-	
+[启动模式详解](http://www.jianshu.com/p/2a9fcf3c11e4)
+#### Intent详解
+    Intent是一种运行时绑定（run-time binding）机制，它能在程序运行过程中连接两个不同的组件。
+    通过Intent，你的程序可以向Android表达某种请求或者意愿，Android会根据意愿的内容选择适当的组件来完成请求。
+    比如，有一个Activity希望打开网页浏览器查看某一网页的内容，那么这个Activity只需要发出WEB_SEARCH_ACTION给Android，Android就会根据Intent的请求内容,
+    查询各组件注册时声明的IntentFilter，找到网页浏览器的Activity来浏览网页。 这个解释好像理解起来就容易好多，
+    我们通过intent传入某种意图，而android就会根据这种意图，自动寻找合适的activity来启动，如果有多个条件符合的activity，
+    就以列表的方式让用户手动选择一个
+[intent详解（一）](http://blog.csdn.net/harvic880925/article/details/38399723)   
+[intent详解（二）](http://blog.csdn.net/harvic880925/article/details/38406421)
 #### Activity数据交互
 #### 深入Activity
 [Activity启动过程全解析](http://blog.csdn.net/zhaokaiqiang1992/article/details/49428287)   
